@@ -1,0 +1,32 @@
+<appwizard>
+	<introduction> 
+		<name>新浪微博OAuth框架</name>
+		<author>easychen ＆＆ Elmer Zhang</author>
+		<icon>default_app_icon</icon>
+		<homepage>http://code.google.com/p/libweibo/</homepage>
+		<category>社会化应用</category>		
+		<description>
+		<![CDATA[
+		新浪微博Oauth框架
+		]]>
+		</description>
+	</introduction>
+	<platform> 
+		<services>
+			<service>
+			</service>
+		</services>
+		<appconfig>		
+			<tpl>
+		<![CDATA[
+name: <<appname>>
+version: <<version>>
+		]]>	
+			</tpl>
+			<!-- form这段可省,只有当config中有需要动态配置的内容时,才写此段 -->
+		</appconfig>
+	</platform>
+	<code> 
+		<initScript>index.php</initScript>
+	</code>
+</appwizard>

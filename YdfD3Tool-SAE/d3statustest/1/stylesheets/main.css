@@ -1,0 +1,85 @@
+﻿body, textarea 
+{
+	margin: 3px;
+	padding: 0;
+	font-family: New York, Microsoft YaHei, 微软雅黑;
+	font-size: 14px; 
+	color: #777777;
+	background-color: #191814;
+	text-align: center;
+}
+
+.default-font
+{
+	font-family: New York, Microsoft YaHei, 微软雅黑;
+	font-size: 14px; 
+	color: #777777;
+}
+
+.div-main-tabs-container
+{
+	width: 760px;
+	height: 600px;
+	background: url("../images/directory-bg.jpg") no-repeat;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+.div-main-tabs-page
+{
+	width: 760px;
+	height: 500px;
+	background: url("../images/directory-bg.jpg") no-repeat;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+.div-bot
+{
+	width: 994px;
+	height: 100px;
+	background: url("../images/content-bot.jpg") no-repeat;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
+.tr-header
+{
+	height: 1px;
+}
+
+.td-area
+{
+	width: 33%;
+	height: 200px;
+	vertical-align: top;
+	padding: 1px 25px;
+}
+
+.td-area.background
+{
+	background: url("../images/directory-divider.png") no-repeat;
+}
+
+.status-icon { float:right; background: url("../images/status.gif") no-repeat scroll 0 0 transparent; height: 28px; margin: 0 auto; width: 27px; }
+.status-icon.up { background-position: -24px 0; }
+
+.txtContent
+{
+	resize:none;
+	overflow-y:visible;	
+	padding: 1px 3px;
+	width: 100%;
+	margin: 0px;
+}
+
+.tabs-page
+{
+	overflow-Y:auto; 
+	overflow-X:hidden; 
+	height:550px;
+	background-attachment: fixed;
+	padding: 0px;
+}
