@@ -12,7 +12,16 @@ function processGetRequest($getRequest)
 	$address["Europe"] = "213.155.134.45";
 	$address["Asia"] = "211.234.120.10";
 	$address["China"] = "";
+		
+	$battlenet["America"] = "us.battle.net";
+	$battlenet["Europe"] = "eu.battle.net";
+	$battlenet["Asia"] = "tw.battle.net";
+	$battlenet["China"] = "www.battlenet.com.cn";
 	
+	$speedtest["http_get_url"] = "d3/static/images/icons/map-small.gif";
+	$speedtest["http_weight"] = 1;
+	$speedtest["method"] = "http";
+
 	switch($getType)
 	{
 		case 'serverip':
@@ -28,6 +37,8 @@ function processGetRequest($getRequest)
 			$d3status_json = $s->read( 'main' , 'd3status.json');
 			$d3status = json_decode($d3status_json, true );
 			$d3status["server_ip"] = $address;
+			$d3status["battle.net"] = $battlenet;
+			$d3status["speedtest"] = $speedtest;
 			RestUtils::sendResponse(200, json_encode($d3status), 'application/json');
 			break;
 	}

@@ -4,6 +4,8 @@ session_start();
 include_once( 'config.php' );
 include_once( 'weibosdk/saetv2.ex.class.php' );
 
+$_SESSION["debug"] = $_REQUEST["debug"];
+
 $token = $_SESSION['token'];
 $isAuthorized = ($token && !$token['error']);
 
@@ -32,13 +34,17 @@ if(!$isAuthorized)
 	}	
 }
 
-$isAuthorized = ($token && !$token['error']);
+$accessToken = $_SESSION['token']['access_token'];
+$_SESSION["Sina_Weibo"]["access_key"] = WB_AKEY;
+$_SESSION["Sina_Weibo"]["secret_key"] = WB_SKEY;
+$_SESSION["Sina_Weibo"]["access_token"] = $accessToken;
 
-$c = new SaeTClientV2( WB_AKEY , WB_SKEY , $_SESSION['token']['access_token'] );
+$c = new SaeTClientV2( WB_AKEY , WB_SKEY , $accessToken);
+$_SESSION["Sina_Weibo"]["sae_client"] = serialize($c);
+
 $uid_get = $c->get_uid();
 $uid = $uid_get['uid'];
 $user_message = $c->show_user_by_id( $uid);
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -48,46 +54,33 @@ $user_message = $c->show_user_by_id( $uid);
 		<title>Ydf D3 tool</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+		<script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=<?= $_SESSION["Sina_Weibo"]["access_key"] ?>" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="jquery/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="jquery/js/jquery-ui-1.8.20.custom.min.js"></script>
 		<link rel="Stylesheet" type="text/css" href="jquery/css/ui-darkness/jquery-ui-1.8.20.custom.css">	
 		<link rel="stylesheet" type="text/css" href="stylesheets/main.css"> 
 		
 		<script type="text/javascript">
-			function showTimeLine(isTimeline)
-			{
-				var $divServer = $('#divServer');
-				var $divWeibo = $('#divWeibo');
-				if(isTimeline)
-				{
-					$divServer.hide();
-					$divWeibo.show();
-				}
-				else
-				{
-					$divServer.show();
-					$divWeibo.hide();
-				}
-			}
 			
 			$(function() {
 				$( "#tabs" ).tabs({
 					ajaxOptions: {
 						error: function( xhr, status, index, anchor ) {
 							$( anchor.hash ).html(
-								"Couldn't load this tab. We'll try to fix this as soon as possible. " +
-								"If this wouldn't be a demo." );
+								"Couldn't load this tab. We'll try to fix this as soon as possible. ");
 						}
 					},
-					panelTemplate: "<div class='tabs-page'></div>"
+					panelTemplate: "<div class='div-main-tabs-page'></div>"
 				});
 			});
+			
 		</script>
 		
 	</head>
 
 	<body>
-	
+
+					
 	<table align=center>
 		<tr>
 			<td style="padding: 0px 10px"><image src="../images/icon80.png"></td>
@@ -109,14 +102,16 @@ $user_message = $c->show_user_by_id( $uid);
 	<div id="tabs" class="div-main-tabs-container default-font">
 		<ul style="background-color: transparent;">
 			<li class="default-font"><a href="server_status_body.php">服务器状态</a></li>
-			<li class="default-font"><a href="d3wb_list.php">最新微博</a></li>
+			<li class="default-font"><a href="wb_d3group.php">官方消息</a></li>
+			<li class="default-font"><a href="wb_ydfgroup.php">云淡风工作室</a></li>
+			
 		</ul>
 	</div>
 
 	© 云淡风工作室 2012, 新浪微博应用<a href="http://apps.weibo.com/dstatus">点这里</a>
 
 	<?
-	if(!$isAuthorized)
+	if(!$mySaeClient)
 	{
 		$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
 		echo "<p><a href=\"" . $code_url ."\"><img src=\"images/weibo_login.png\" title=\"点击进入授权页面\" alt=\"点击进入授权页面\" border=\"0\" /></a></p>";
