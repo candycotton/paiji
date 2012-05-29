@@ -8,7 +8,7 @@ include_once("server_status_utils.php");
 			<tr class="tr-header">
 			</tr>
 			<tr>
-				<td class="td-area default-font">
+				<td class="td-area background default-font">
 					<H2>美国</H2>
 					<?BuildList($d3status['Americas'])?>
 				</td>

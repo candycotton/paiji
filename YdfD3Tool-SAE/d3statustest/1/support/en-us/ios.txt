@@ -1,0 +1,12 @@
+<h1>YDF D3 Helper 1.0</h1>
+Diablo 3 is online now! After so many years? WOW! 
+You still have trouble to log on the server? Or you are not sure which server is fastest to connect? Surely you don't want to switch between servers to know that. 
+These was never problems with previous versions of Diablo. Also, there was never an iPhone back in that time. Don't wanna sitting in front of your desktop refreshing server all day? Let YDF studio help you on that. 
+
+With this tiny helper APP, you can monitor server status whenever you want, you can test the latency of you network environment. 
+
+Ver 1.0 is released with all server status and server latency testing ready. Enjoy!
+
+<h1>About YDF Studio</h1>
+	YDF studio was found in Year 2012 by our 4 software engineers: DT, LF, CB and CK. We were brought together by games and we still love game. So we created tools and APPs based our own needs and would want to help everyone who has similar demand like us.
+	Vitality and prosperity!
