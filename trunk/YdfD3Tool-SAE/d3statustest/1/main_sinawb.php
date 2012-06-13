@@ -106,8 +106,10 @@ include_once("server_status_utils.php");
 	<div id="tabs" class="div-main-tabs-container default-font">
 		<ul style="background-color: transparent;">
 			<li class="default-font"><a href="server_status_body.php">服务器状态</a></li>
+			<li class="default-font"><a href="server_announce.php">维护公告</a></li>
 			<li class="default-font"><a href="wb_d3group.php">官方消息</a></li>
 			<li class="default-font"><a href="wb_ydfgroup.php">云淡风工作室</a></li>
+			<li class="default-font"><a href="app_store.php">App Store</a></li>
 		</ul>
 	</div>
 	<br>
