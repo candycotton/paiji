@@ -1,5 +1,7 @@
 <?php
-include_once("restutils.php");
+include_once( 'restutils.php' );
+include_once( 'check_d3server_utils.php' );
+include_once( 'service_config.php' );
 
 $data = RestUtils::processRequest();
 
@@ -24,6 +26,18 @@ function processGetRequest($getRequest)
 
 	switch($getType)
 	{
+		case 'version':
+			$version_appstore = array(IOS_APPSTORE_D3HELPER_ID => IOS_APPSTORE_D3HELPER_VERSION, IOS_APPSTORE_D3SKILL_ID => IOS_APPSTORE_D3SKILL_VERSION);
+			$version = array("app_store" => $version_appstore);
+			RestUtils::sendResponse(200, json_encode($version), 'application/json');
+			break;
+		case 'announce':
+			$annouce = read_from_storage_json('d3annouce.json');
+			if(null != $annouce)
+			{
+				RestUtils::sendResponse(200, $annouce, 'application/json');
+			}
+			break;
 		case 'serverip':
 			// 亚服：211.234.120.10
 			// 美服：12.129.193.254 
