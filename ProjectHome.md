@@ -1,0 +1,1 @@
+Share your photo to web and SNS with Geo.
